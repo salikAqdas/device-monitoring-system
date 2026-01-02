@@ -1,0 +1,19 @@
+{
+  "name": "device-monitoring",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "node-cron": "^3.0.3",
+    "p-limit": "^4.0.0",
+    "pg": "^8.11.3",
+    "ping": "^0.4.4",
+    "xlsx": "^0.18.5"
+  }
+}

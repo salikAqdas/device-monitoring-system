@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Device Monitoring</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<h1>Device Monitoring Dashboard</h1>
+
+<div class="tabs">
+  <button class="tab active" data-tab="all">All Devices</button>
+  <button class="tab" data-tab="online">Online</button>
+  <button class="tab" data-tab="offline">Offline</button>
+  <button class="tab" data-tab="logs">Logs</button>
+
+  <button class="add-btn" id="openModalBtn">+ Add Device</button>
+</div>
+
+<input
+  type="text"
+  id="searchInput"
+  placeholder="Search by Device ID / Location / IP"
+/>
+
+<!-- DEVICE TABLE -->
+<table>
+  <thead>
+    <tr>
+      <th>Device ID</th>
+      <th>Location</th>
+      <th>IP</th>
+      <th>Status</th>
+      <th>Offline Since</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="deviceTable"></tbody>
+</table>
+
+<!-- LOGS -->
+<div id="logsSection" style="display:none;">
+  <h3>Recent Logs (Last 2 Days)</h3>
+
+  <input id="logDeviceFilter" placeholder="Filter by Device ID" />
+  <select id="logStatusFilter">
+    <option value="">All</option>
+    <option value="ONLINE">ONLINE</option>
+    <option value="OFFLINE">OFFLINE</option>
+  </select>
+
+  <button onclick="loadLogs()">Search</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th>Status</th>
+        <th>Response (ms)</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="logsTable"></tbody>
+  </table>
+
+  <h3>Archived Logs</h3>
+  <ul id="archiveList"></ul>
+</div>
+
+<!-- MODAL -->
+<div id="deviceModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModalBtn">&times;</span>
+    <h3 id="modalTitle">Add Device</h3>
+
+    <form id="deviceForm">
+      <input type="hidden" id="editId" />
+
+      <label>Device ID</label>
+      <input id="device_id" required />
+
+      <label>Device Name</label>
+      <input id="device_name" required />
+
+      <label>Location</label>
+      <input id="location" required />
+
+      <label>IP Address</label>
+      <input id="ip_address" required />
+
+      <button type="submit">Save</button>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

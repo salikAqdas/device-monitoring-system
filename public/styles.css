@@ -1,0 +1,91 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f5f6fa;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab, .add-btn {
+  padding: 8px 14px;
+  cursor: pointer;
+  border: none;
+  background: #ddd;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+}
+
+.add-btn {
+  margin-left: auto;
+  background: #28a745;
+  color: white;
+}
+
+input {
+  padding: 6px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.status-online {
+  color: green;
+  font-weight: bold;
+}
+
+.status-offline {
+  color: red;
+  font-weight: bold;
+}
+
+button.small {
+  padding: 4px 8px;
+  margin-right: 5px;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background: white;
+  width: 400px;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+
+tbody{
+  text-align: center;
+}
