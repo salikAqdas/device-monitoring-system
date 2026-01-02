@@ -1,91 +1,200 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  margin: 0;
   padding: 20px;
-  background: #f5f6fa;
+  background: #f4f6f9;
+  color: #333;
 }
 
 h1 {
-  margin-bottom: 10px;
-}
-
-.tabs {
-  display: flex;
-  gap: 10px;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.tab, .add-btn {
-  padding: 8px 14px;
-  cursor: pointer;
+/* =========================
+   BUTTONS
+========================= */
+button {
   border: none;
-  background: #ddd;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
 }
 
-.tab.active {
-  background: #007bff;
-  color: white;
+button:hover {
+  opacity: 0.9;
 }
 
 .add-btn {
+  background: #4f46e5;
+  color: white;
   margin-left: auto;
-  background: #28a745;
+}
+
+.small {
+  background: #e5e7eb;
+}
+
+.small:hover {
+  background: #d1d5db;
+}
+
+/* =========================
+   TABS
+========================= */
+.tabs {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.tab {
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #4f46e5;
   color: white;
 }
 
-input {
-  padding: 6px;
-  margin: 5px 0;
+/* =========================
+   SEARCH
+========================= */
+#searchInput {
   width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
+/* =========================
+   TABLE
+========================= */
 table {
   width: 100%;
   border-collapse: collapse;
   background: white;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 th, td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: left;
 }
 
+th {
+  background: #f3f4f6;
+  font-weight: 600;
+}
+
+tr:hover {
+  background: #f9fafb;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
 .status-online {
-  color: green;
-  font-weight: bold;
+  color: #16a34a;
+  font-weight: 600;
 }
 
 .status-offline {
-  color: red;
-  font-weight: bold;
+  color: #dc2626;
+  font-weight: 600;
 }
 
-button.small {
-  padding: 4px 8px;
-  margin-right: 5px;
-}
-
-/* Modal */
+/* =========================
+   MODAL
+========================= */
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.4);
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
 }
+.modal.show {
+  display: flex;
+}
+
 
 .modal-content {
   background: white;
+  padding: 25px;
+  border-radius: 10px;
   width: 400px;
-  margin: 10% auto;
-  padding: 20px;
+  max-width: 90%;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
   border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  margin-top: 15px;
+  width: 100%;
+  background: #4f46e5;
+  color: white;
 }
 
 .close {
   float: right;
   cursor: pointer;
+  font-size: 18px;
+  color: #666;
 }
 
+/* =========================
+   LOGS SECTION
+========================= */
+#logsSection {
+  margin-top: 20px;
+}
 
-tbody{
-  text-align: center;
+/* =========================
+   BADGES
+========================= */
+.badge-active {
+  background: #dcfce7;
+  color: #166534;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.badge-inactive {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
 }

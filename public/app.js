@@ -58,7 +58,6 @@ function render() {
       <td>${d.is_active ? 'Yes' : 'No'}</td>
       <td>
         <button class="small" onclick="editDevice('${d.device_id}')">Edit</button>
-        <button class="small" onclick="deleteDevice('${d.device_id}')">Delete</button>
       </td>
     `;
     table.appendChild(tr);
@@ -69,7 +68,7 @@ function render() {
 document.getElementById('openModalBtn').onclick = () => {
   form.reset();
   document.getElementById('editId').value = '';
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
 };
 
 document.getElementById('closeModalBtn').onclick = () => {
@@ -107,7 +106,7 @@ function editDevice(id) {
   document.getElementById('location').value = d.location;
   ip_address.value = d.ip_address;
     document.querySelector(`input[name="is_active"][value="${d.is_active}"]`).checked = true;
-  modal.style.display = 'block';
+  modal.style.display = 'flex';
 }
 
 async function deleteDevice(id) {
@@ -122,14 +121,16 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     currentTab = tab.dataset.tab;
-
+    const deviceSection = document.getElementById('deviceSection');
     document.getElementById('logsSection').style.display =
       currentTab === 'logs' ? 'block' : 'none';
 
     if (currentTab === 'logs') {
+      deviceSection.style.display = 'none';
       loadLogs();
       loadArchives();
     } else {
+      deviceSection.style.display = 'block';
       render();
     }
   };
