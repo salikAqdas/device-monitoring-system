@@ -20,6 +20,8 @@ async function updateDeviceStatus(deviceId, isAlive, responseTime) {
           last_online_at = $1,
           offline_since = NULL,
           failure_count = 0,
+          alert_sent = FALSE,
+          alert_sent_at = NULL,
           response_time_ms = $2
       WHERE device_id = $3
     `, [now, responseTime, deviceId]);

@@ -55,6 +55,7 @@ function render() {
       <td>${d.ip_address}</td>
       <td class="${d.status === 'ONLINE' ? 'status-online' : 'status-offline'}">${d.status}</td>
       <td>${d.status === 'OFFLINE' ? humanizeDuration(d.offline_since) : '-'}</td>
+      <td>${d.is_active ? 'Yes' : 'No'}</td>
       <td>
         <button class="small" onclick="editDevice('${d.device_id}')">Edit</button>
         <button class="small" onclick="deleteDevice('${d.device_id}')">Delete</button>
@@ -82,7 +83,8 @@ form.onsubmit = async (e) => {
     device_id: device_id.value,
     device_name: device_name.value,
     location: document.getElementById('location').value,
-    ip_address: ip_address.value
+    ip_address: ip_address.value,
+    is_active: document.querySelector('input[name="is_active"]:checked').value === 'true'
   };
 
   const id = document.getElementById('editId').value;
@@ -104,6 +106,7 @@ function editDevice(id) {
   device_name.value = d.device_name;
   document.getElementById('location').value = d.location;
   ip_address.value = d.ip_address;
+    document.querySelector(`input[name="is_active"][value="${d.is_active}"]`).checked = true;
   modal.style.display = 'block';
 }
 

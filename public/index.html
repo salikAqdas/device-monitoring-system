@@ -33,6 +33,7 @@
       <th>IP</th>
       <th>Status</th>
       <th>Offline Since</th>
+      <th>Is Active</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -88,6 +89,17 @@
 
       <label>IP Address</label>
       <input id="ip_address" required />
+      <label>Status</label>
+<div style="display:flex; gap:10px;">
+  <label>
+    <input type="radio" name="is_active" value="true" checked />
+    Active
+  </label>
+  <label>
+    <input type="radio" name="is_active" value="false" />
+    Inactive
+  </label>
+</div>
 
       <button type="submit">Save</button>
     </form>

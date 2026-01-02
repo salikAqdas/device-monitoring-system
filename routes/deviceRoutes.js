@@ -9,15 +9,21 @@ const path = require('path');
 router.get('/', async (req, res) => {
   try {
     const result = await db.query(`
-      SELECT d.device_id, d.device_name, d.location, d.ip_address,
-             s.status, s.last_checked_at, s.last_online_at, s.offline_since
-      FROM devices d
-      LEFT JOIN device_status s ON d.device_id = s.device_id
-      WHERE d.is_active = true
-      ORDER BY d.device_id
-    `);
+    SELECT 
+      d.device_id,
+      d.device_name,
+      d.location,
+      d.ip_address,
+      d.is_active,
+      s.status,
+      s.last_checked_at,
+      s.offline_since
+    FROM devices d
+    LEFT JOIN device_status s ON d.device_id = s.device_id
+    ORDER BY d.device_id
+  `);
 
-    res.json(result.rows);
+  res.json(result.rows);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to fetch devices' });
@@ -49,13 +55,13 @@ router.get('/:id', async (req, res) => {
 
 // ADD device
 router.post('/', async (req, res) => {
-  const { device_id, device_name, location, ip_address } = req.body;
+  const { device_id, device_name, location, ip_address, is_active } = req.body;
 
   try {
     await db.query(
-      `INSERT INTO devices (device_id, device_name, location, ip_address)
-       VALUES ($1, $2, $3, $4)`,
-      [device_id, device_name, location, ip_address]
+      `INSERT INTO devices (device_id, device_name, location, ip_address, is_active)
+       VALUES ($1, $2, $3, $4, $5)`,
+      [device_id, device_name, location, ip_address, is_active]
     );
 
     await db.query(
@@ -73,7 +79,7 @@ router.post('/', async (req, res) => {
 // EDIT device
 // UPDATE device
 router.put('/:id', async (req, res) => {
-  const { device_name, location, ip_address } = req.body;
+  const { device_name, location, ip_address, is_active } = req.body;
 
   try {
     await db.query(
@@ -83,10 +89,11 @@ router.put('/:id', async (req, res) => {
         device_name = $1,
         location = $2,
         ip_address = $3,
+        is_active = $4,
         updated_at = NOW()
-      WHERE device_id = $4
+      WHERE device_id = $5
       `,
-      [device_name, location, ip_address, req.params.id]
+      [device_name, location, ip_address, is_active, req.params.id]
     );
 
     res.json({ message: 'Device updated successfully' });

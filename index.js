@@ -16,6 +16,8 @@ app.use('/api/devices', deviceRoutes);
 // Scheduler
 require('./scheduler/healthCheckScheduler');
 require('./scheduler/archiveScheduler');
+require('./scheduler/alertScheduler');
+
 
 // Default route
 app.get('/', (req, res) => {
